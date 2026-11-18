@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#087f8c">
+  <title><%= typeof tituloPagina !== 'undefined' ? tituloPagina + ' | Arena Areia' : 'Arena Areia | Quadras e reservas' %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styleSite.css">
+</head>
+<body>
+  <% const paginaAtual = typeof paginaAtiva !== 'undefined' ? paginaAtiva : ''; %>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Arena Areia - início">
+      <span class="brand-mark">A</span>
+      <span>Arena <strong>Areia</strong><small>ESPORTES & LAZER</small></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" onclick="document.querySelector('.main-nav').classList.toggle('aberto'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') !== 'true')">☰</button>
+    <nav class="main-nav" aria-label="Menu principal">
+      <a href="/" class="<%= paginaAtual === 'inicio' ? 'ativo' : '' %>">Início</a>
+      <a href="/site/quadras" class="<%= paginaAtual === 'quadras' ? 'ativo' : '' %>">Quadras</a>
+      <a href="/site/nova-reserva" class="<%= paginaAtual === 'reservas' ? 'ativo' : '' %>">Reservar</a>
+      <a href="/site/reservas">Minhas reservas</a>
+      <a href="/site/login" class="<%= paginaAtual === 'login' ? 'ativo' : '' %>">Entrar</a>
+    </nav>
+  </header>
+  <div class="page-shell">

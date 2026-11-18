@@ -1,0 +1,32 @@
+<%- include('cabecalho.ejs', { paginaAtiva: 'inicio', tituloPagina: 'Início' }) %>
+<main>
+  <section class="hero-home">
+    <div class="hero-copy">
+      <span class="eyebrow"><span></span> VIVA O ESPORTE AO AR LIVRE</span>
+      <h1>O seu lugar para<br><em>jogar e se conectar.</em></h1>
+      <p>Encontre a quadra ideal, escolha seu horário e venha viver a energia da areia. Beach tennis, vôlei e futevôlei esperam por você.</p>
+      <div class="hero-actions">
+        <a href="/site/quadras" class="btn btn-primary">Encontrar uma quadra <span>→</span></a>
+        <a href="/site/nova-reserva" class="btn btn-outline">Fazer uma reserva</a>
+      </div>
+      <div class="hero-note"><span class="note-icon">✓</span> Fácil de reservar. Melhor ainda de jogar.</div>
+    </div>
+    <div class="hero-art" role="img" aria-label="Ilustração de uma quadra de areia ao ar livre">
+      <div class="sun"></div><div class="court-lines"></div>
+      <div class="art-label"><strong>É hora de entrar em quadra.</strong><small>Seu jogo, seu ritmo, sua arena.</small></div>
+      <span class="art-ball">●</span>
+    </div>
+  </section>
+
+  <section class="intro-section">
+    <div><span class="eyebrow">DO SEU JEITO</span><h2>Mais esporte.<br><em>Mais momentos.</em></h2></div>
+    <p>Na Arena Areia, organizar sua partida é simples. Confira as quadras cadastradas, veja os valores e agende seu próximo jogo.</p>
+  </section>
+  <section class="steps-grid">
+    <article class="step-card"><span class="step-number">01</span><div class="step-icon">⌖</div><h3>Escolha a quadra</h3><p>Compare localização, tipo e valor por hora.</p></article>
+    <article class="step-card"><span class="step-number">02</span><div class="step-icon">◷</div><h3>Defina seu horário</h3><p>Selecione a data e o horário que funcionam para você.</p></article>
+    <article class="step-card"><span class="step-number">03</span><div class="step-icon">✓</div><h3>Confirme e jogue</h3><p>Finalize sua reserva e prepare-se para entrar em quadra.</p></article>
+  </section>
+  <section class="cta-band"><div><span class="eyebrow">BORA JOGAR?</span><h2>A areia está te esperando.</h2></div><a href="/site/quadras" class="btn btn-light">Ver quadras disponíveis →</a></section>
+</main>
+<%- include('rodape.ejs') %>

@@ -1,0 +1,54 @@
+<%- include('../cabecalho.ejs') %>
+<main class="admin-page">
+
+    <h1>Quadras</h1>
+
+    <div>
+        <a href="/quadra/add" class="btn btn-primary">+ Quadra</a>
+    </div>
+
+    <div class="admin-table-wrap"><table>
+
+        <tr>
+            <th>Usuário</th>
+            <th>Localização</th>
+            <th>Tipo</th>
+            <th>Valor da hora</th>
+            <th>Foto</th>
+            <th>Ações</th>
+        </tr>
+        <% for (const quadra of Quadras) { %>
+            <tr>
+                <td>
+                    <%= quadra.usuario ? quadra.usuario.nome : 'Usuário não encontrado' %>
+                </td>
+                <td>
+                    <%= quadra.localizacao %>
+                </td>
+                <td>
+                    <%= quadra.tipo==='coberta' ? 'Areia Coberta' : 'Areia Aberta' %>
+                </td>
+                <td>R$ <%= quadra.valor %>
+                </td>
+                <td>
+                    <% if (quadra.foto) { %>
+                        <img src="<%= quadra.foto %>" alt="Foto da quadra" width="150">
+                        <% } else { %>
+                            Sem foto
+                            <% } %>
+                </td>
+                <td>
+                    <a href="/quadra/edt/<%= quadra._id %>">Editar</a>
+                    <a href="/quadra/del/<%= quadra._id %>" class="btn btn-danger"
+                        onclick="return confirm('Deseja realmente excluir esta quadra?')"> Excluir
+                    </a>
+                </td>
+
+            </tr>
+
+            <% } %>
+
+    </table></div>
+
+</main>
+    <%- include('../rodape.ejs') %>

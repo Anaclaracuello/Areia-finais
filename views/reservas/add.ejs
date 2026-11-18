@@ -1,0 +1,49 @@
+<%-include('../cabecalho.ejs')%>
+<main class="admin-page">
+
+    <h1>Adicionar Reserva</h1>
+
+    <div class="admin-actions">
+        <a href="/reserva/lst" class="btn btn-secondary">Voltar para reservas</a>
+    </div>
+
+    <div>
+        <form method="post" class="admin-form">
+
+            <label>Usuário:</label>
+            <select name="usuario" required>
+                <option value="">Selecione o usuário</option>
+
+                <% for (const usuario of Usuarios) { %>
+                    <option value="<%=usuario._id%>">
+                        <%=usuario.nome%> - <%=usuario.telefone%>
+                    </option>
+                    <% } %>
+
+            </select><br>
+
+            <label>Quadra:</label>
+            <select name="quadra" required>
+                <option value="">Selecione a quadra</option>
+
+                <% for (const quadra of Quadras) { %>
+                    <option value="<%=quadra._id%>">
+                        <%=quadra.localizacao%> - <%=quadra.tipo%> - R$ <%=quadra.valor%>
+                    </option>
+                    <% } %>
+
+            </select> <br>
+
+            <label>Data:</label>
+            <input type="date" name="data" required><br>
+
+            <label>Horário:</label>
+            <input type="time" name="horario" required><br>
+
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+
+        </form>
+    </div>
+
+</main>
+    <%-include('../rodape.ejs')%>

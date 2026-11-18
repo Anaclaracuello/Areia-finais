@@ -1,0 +1,16 @@
+<%- include('../cabecalho.ejs', { paginaAtiva: 'login' , tituloPagina: 'Entrar' }) %>
+  <main class="content-page narrow-page">
+    <section class="page-heading"><span class="eyebrow">BEM-VINDO À ARENA</span>
+      <h1>Que bom ter <em>você aqui.</em></h1>
+      <p>O acesso com senha ainda não está habilitado neste projeto.</p>
+    </section>
+    <section class="form-card login-card">
+      <div class="login-symbol">A</div>
+      <h2>Consulte suas reservas</h2>
+      <p>Por enquanto, você pode consultar seus horários usando o e-mail cadastrado.</p><a href="/site/reservas"
+        class="btn btn-primary btn-submit">Minhas reservas →</a>
+      <div class="form-divider"></div>
+      <p>Ainda não tem cadastro?</p><a href="/usuario/add" class="text-link">Cadastre-se por aqui</a>
+    </section>
+  </main>
+  <%- include('../rodape.ejs') %>

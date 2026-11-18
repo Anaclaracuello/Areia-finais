@@ -1,0 +1,43 @@
+<%- include('../cabecalho.ejs', { paginaAtiva: 'reservas' , tituloPagina: 'Nova reserva' }) %>
+  <main class="content-page narrow-page">
+    <section class="page-heading"><span class="eyebrow">GARANTA SEU HORÁRIO</span>
+      <h1>Agende sua <em>partida.</em></h1>
+      <p>Preencha os dados abaixo para solicitar sua reserva.</p>
+    </section>
+    <section class="form-card">
+      <% if (!Quadras.length) { %>
+        <div class="notice">Ainda não existem quadras cadastradas. Volte mais tarde.</div>
+        <% } else if (!Usuarios.length) { %>
+          <div class="notice">Cadastre um usuário antes de realizar uma reserva.</div><a class="btn btn-primary"
+            href="/usuario/add">Cadastrar usuário</a>
+          <% } else { %>
+            <form action="/reserva/add" method="post">
+              <div class="form-group"><label for="usuario">Quem está reservando?</label><select id="usuario"
+                  name="usuario" required>
+                  <option value="">Selecione seu cadastro</option>
+                  <% Usuarios.forEach(u=> { %><option value="<%= u._id %>">
+                      <%= u.nome %> — <%= u.email %>
+                    </option>
+                    <% }) %>
+                </select></div>
+              <div class="form-group"><label for="quadra">Escolha a quadra</label><select id="quadra" name="quadra"
+                  required>
+                  <option value="">Selecione uma quadra</option>
+                  <% Quadras.forEach(q=> { %><option value="<%= q._id %>">
+                      <%= q.localizacao %> · <%= q.tipo==='coberta' ? 'Coberta' : 'Aberta' %> · R$ <%=
+                            Number(q.valor).toFixed(2).replace('.', ',' ) %>/h
+                    </option>
+                    <% }) %>
+                </select></div>
+              <div class="form-row">
+                <div class="form-group"><label for="data">Data</label><input id="data" type="date" name="data"
+                    min="<%= new Date().toISOString().slice(0,10) %>" required></div>
+                <div class="form-group"><label for="horario">Horário de início</label><input id="horario" type="time"
+                    name="horario" required></div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-submit">Confirmar reserva <span>→</span></button>
+            </form>
+            <% } %>
+    </section>
+  </main>
+  <%- include('../rodape.ejs') %>

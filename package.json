@@ -1,0 +1,19 @@
+{
+  "name": "vercellbase",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env index.js",
+    "test": "node --check index.js && node --check config/conexao.js && node --check controllers/siteController.js && node --check controllers/quadraController.js && node --check controllers/reservaController.js && node --check controllers/usuarioController.js && node --check routes/siteRoutes.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "mongodb": "^7.6.0",
+    "mongoose": "^9.9.4"
+  }
+}

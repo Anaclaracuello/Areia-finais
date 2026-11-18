@@ -1,0 +1,50 @@
+<%-include('../cabecalho.ejs') %>
+<main class="admin-page">
+
+    <h1>Usuários</h1>
+
+    <div class="search">
+        <form action="/usuario/lst" method="post">
+
+            <input type="text" name="filtro" placeholder="digite o nome">
+
+            <button type="submit" class="btn">Pesquisar</button>
+        </form>
+    </div>
+
+    <br>
+    <a href="/usuario/add" class="btn btn-primary">+ Usuário</a>
+
+    <div class="admin-table-wrap"><table>
+        <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Telefone</th>
+            <th>Ações</th>
+        </tr>
+        <% for (const usuario of Usuarios) { %>
+            <tr>
+                <td>
+                    <%= usuario.nome %>
+                </td>
+                <td>
+                    <%= usuario.email %>
+                </td>
+                <td>
+                    <%= usuario.telefone %>
+                </td>
+                <td>
+                    <a href="/usuario/edt/<%= usuario._id %>" class="btn">
+                        Editar
+                    </a>
+                    <a href="/usuario/del/<%= usuario._id %>" class="btn btn-danger"
+                        onclick="return confirm('Deseja realmente excluir este usuário?')">
+                        Excluir
+                    </a>
+                </td>
+            </tr>
+            <% } %>
+
+    </table></div>
+</main>
+    <%- include('../rodape.ejs') %>

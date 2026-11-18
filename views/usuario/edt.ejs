@@ -1,0 +1,33 @@
+<%- include('../cabecalho.ejs') %>
+    <main class="admin-page">
+
+        <h1>Editar Usuário</h1>
+
+        <div class="admin-actions">
+            <a href="/usuario/lst" class="btn btn-secondary">Voltar para usuários</a>
+        </div>
+
+        <div>
+            <form method="post" class="admin-form">
+
+                <input type="hidden" name="id" value="<%= Usuario._id %>">
+
+                <label>Nome:</label>
+                <input type="text" name="nome" value="<%= Usuario.nome %>" required><br>
+
+                <label>E-mail:</label>
+                <input type="email" name="email" value="<%= Usuario.email %>" required><br>
+
+                <label>Telefone:</label>
+                <input type="text" name="telefone" value="<%= Usuario.telefone %>" required><br>
+
+                <label>Senha:</label>
+                <input type="password" name="senha" value="<%= Usuario.senha %>" required><br>
+
+                <button type="submit" class="btn btn-primary">Salvar</button>
+
+            </form>
+        </div>
+
+    </main>
+    <%- include('../rodape.ejs') %>

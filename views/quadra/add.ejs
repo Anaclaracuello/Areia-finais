@@ -1,0 +1,49 @@
+<%- include('../cabecalho.ejs') %>
+<main class="admin-page">
+
+    <h1>Adicionar Quadra</h1>
+
+    <div class="admin-actions">
+        <a href="/quadra/lst" class="btn btn-secondary">Voltar para quadras</a>
+    </div>
+
+    <div>
+        <form method="post" class="admin-form">
+
+            <label>Usuário:</label>
+
+            <select name="usuario" required>
+                <option value="">Selecione o usuário</option>
+
+                <% for (const usuario of Usuarios) { %>
+                    <option value="<%= usuario._id %>">
+                        <%= usuario.nome %> - <%= usuario.email %>
+                    </option>
+                    <% } %>
+
+            </select>
+            <br>
+
+            <label>Localização:</label>
+            <input type="text" name="localizacao" required><br>
+
+            <label>Tipo da quadra:</label>
+            <select name="tipo" id="tipo" required>
+                <option value="">Selecione o tipo</option>
+                <option value="coberta">Areia Coberta</option>
+                <option value="aberta">Areia Aberta</option>
+            </select><br>
+
+            <label>Valor da Hora:</label>
+            <input type="number" name="valor" step="0.01" min="0" required><br>
+
+            <label>Link da foto da quadra:</label>
+            <input type="url" name="foto" placeholder="https://exemplo.com/foto.jpg"><br>
+
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+
+        </form>
+    </div>
+
+</main>
+    <%- include('../rodape.ejs') %>

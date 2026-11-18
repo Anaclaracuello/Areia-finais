@@ -22,3 +22,4 @@ O banco utilizado é `quadrascerto`. A conexão está configurada em `config/con
 
 As páginas usam EJS e o CSS principal está em `public/css/styleSite.css`.
 # Areia-finais
+# Areia-finais

@@ -1,0 +1,38 @@
+<%- include('../cabecalho.ejs', { paginaAtiva: 'quadras' , tituloPagina: 'Quadras' }) %>
+  <main class="content-page">
+    <section class="page-heading"><span class="eyebrow">ENCONTRE SEU ESPAÇO</span>
+      <h1>Quadras <em>disponíveis</em></h1>
+      <p>Escolha o cenário da sua próxima partida.</p>
+    </section>
+    <% if (!Quadras.length) { %>
+      <div class="empty-state"><span>🏖️</span>
+        <h2>Nenhuma quadra cadastrada ainda</h2>
+        <p>Assim que houver quadras disponíveis, elas aparecerão aqui.</p>
+      </div>
+      <% } else { %>
+        <section class="court-grid">
+          <% Quadras.forEach((quadra)=> { %>
+            <article class="court-card">
+              <div class="court-photo">
+                <% if (quadra.foto) { %><img src="<%= quadra.foto %>" alt="Quadra em <%= quadra.localizacao %>">
+                  <% } else { %>
+                    <div class="photo-placeholder"><span>ARENA</span><strong>AREIA</strong></div>
+                    <% } %>
+                      <span class="court-tag">
+                        <%= quadra.tipo==='coberta' ? 'Coberta' : 'Ao ar livre' %>
+                      </span>
+              </div>
+              <div class="court-info"><span class="eyebrow">QUADRA DE AREIA</span>
+                <h2>
+                  <%= quadra.localizacao %>
+                </h2>
+                <div class="court-bottom"><strong>R$ <%= Number(quadra.valor).toFixed(2).replace('.', ',' ) %><small> /
+                        hora</small></strong><a class="btn btn-primary btn-small" href="/site/nova-reserva">Reservar
+                    →</a></div>
+              </div>
+            </article>
+            <% }) %>
+        </section>
+        <% } %>
+  </main>
+  <%- include('../rodape.ejs') %>

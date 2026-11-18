@@ -1,0 +1,43 @@
+<%- include('../cabecalho.ejs') %>
+<main class="admin-page">
+
+  <h1>Editar Quadra</h1>
+
+  <div class="admin-actions">
+    <a href="/quadra/lst" class="btn btn-secondary">Voltar para quadras</a>
+  </div>
+
+  <form method="post" class="admin-form">
+    <label>Usuário:</label>
+    <select name="usuario" required>
+      <% for (const usuario of Usuarios) { %>
+        <option value="<%= usuario._id %>" <%=String(usuario._id)===String(Quadra.usuario) ? 'selected' : '' %>><%=
+            usuario.nome %>
+        </option>
+        <% } %>
+    </select><br>
+
+    <label>Localização:</label>
+    <input type="text" name="localizacao" value="<%= Quadra.localizacao %>" required><br>
+
+    <label>Tipo:</label>
+    <select name="tipo" required>
+      <option value="coberta" <%=Quadra.tipo==='coberta' ? 'selected' : '' %>>Areia Coberta</option>
+      <option value="aberta" <%=Quadra.tipo==='aberta' ? 'selected' : '' %>>Areia Aberta</option>
+    </select><br>
+
+    <label>Valor da hora:</label>
+    <input type="number" name="valor" value="<%= Quadra.valor %>" step="0.01" min="0" required><br>
+
+    <label>Link da foto:</label>
+    <input type="url" name="foto" value="<%= Quadra.foto || '' %>" placeholder="https://exemplo.com/foto.jpg"><br>
+    <% if (Quadra.foto) { %>
+      <img src="/quadra/foto/<%=Quadra.id%>" alt="Foto da quadra" width="120">
+      <label><input type="checkbox" name="removerCapa"> Remover foto atual</label><br>
+      <% } %>
+
+        <button type="submit" class="btn btn-primary">Salvar</button>
+  </form>
+
+</main>
+  <%- include('../rodape.ejs') %>
